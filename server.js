@@ -1,19 +1,18 @@
 import express from "express";
-import { startServer } from "mcp-gdrive";
 import dotenv from "dotenv";
+import { GoogleDriveServer } from "@modelcontextprotocol/server-google-drive";
 
 dotenv.config();
 
 const app = express();
 
-startServer({
-  app,
-  credentials: {
-    client_id: process.env.CLIENT_ID,
-    client_secret: process.env.CLIENT_SECRET,
-    redirect_uri: process.env.REDIRECT_URI
-  }
+const server = new GoogleDriveServer({
+  clientId: process.env.CLIENT_ID,
+  clientSecret: process.env.CLIENT_SECRET,
+  redirectUri: process.env.REDIRECT_URI
 });
+
+app.use("/", server.router);
 
 const port = process.env.PORT || 3000;
 app.listen(port, () => {
