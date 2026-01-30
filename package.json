@@ -1,6 +1,9 @@
 {
+  "name": "gdrive-mcp",
+  "version": "1.0.0",
+  "type": "module",
   "dependencies": {
-    "@modelcontextprotocol/server-google-drive": "latest",
+    "@modelcontextprotocol/server-google-drive": "github:modelcontextprotocol/servers#main",
     "express": "latest",
     "dotenv": "latest"
   }
